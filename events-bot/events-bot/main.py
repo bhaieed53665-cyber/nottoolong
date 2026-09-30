@@ -97,15 +97,16 @@ bot = Bot()
 @bot.tree.command(name="eventsapplication", description="تقديم على الفعاليات")
 @app_commands.default_permissions(administrator=True)  # الإدارة بس ترسل اللوحة
 async def eventsapplication(interaction: discord.Interaction):
+    RLM = "\u200f"  # علامة تجبر النص يكون من اليمين لليسار
     embed = discord.Embed(
-        title="التقديم على رتبة صانع محتوى",
+        title=f"{RLM}التقديم على رتبة صانع محتوى",
         description=(
-            "# شروط صانعي المحتوى في حفل ميلاد\n"
-            "- ممنوع أن يكون على العضو أي شكوى سابقة\n"
-            "- يجب ان يكون نسبة كبيرة من محتواك متعلقه بـ حفل ميلاد\n"
-            "- المحتوى في روم المحتوى مراقب من قبل الإدارة وأي مخالفة ستسحب الرتبة مباشرة"
+            f"# {RLM}شروط صانعي المحتوى في حفل ميلاد\n"
+            f"- {RLM}ممنوع أن يكون على العضو أي شكوى سابقة\n"
+            f"- {RLM}يجب ان يكون نسبة كبيرة من محتواك متعلقه بـ حفل ميلاد\n"
+            f"- {RLM}المحتوى في روم المحتوى مراقب من قبل الإدارة وأي مخالفة ستسحب الرتبة مباشرة"
         ),
-        color=discord.Color.blurple(),
+        color=discord.Color.from_rgb(232, 83, 31),  # برتقالي محمر
     )
     await interaction.response.send_message(embed=embed, view=ApplyView())
 
